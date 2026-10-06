@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+After School Coding - Admin
+</div>
+
+</nav>
+
+<section>
+
+<div class="container">
+
+<div class="form-container">
+
+<div class="form-box">
+
+<h1>
+Admin Login
+</h1>
+
+<input
+id="adminEmail"
+type="email"
+placeholder="Admin Email"
+>
+
+<input
+id="adminPassword"
+type="password"
+placeholder="Admin Password"
+>
+
+<button
+class="btn"
+onclick="adminLogin()"
+>
+Login
+</button>
+
+</div>
+
+</div>
+
+<br>
+
+<div id="adminContent"></div>
+
+</div>
+
+</section>
+
+<script>
+
+async function adminLogin() {
+
+const email =
+document.getElementById(
+"adminEmail"
+).value;
+
+const password =
+document.getElementById(
+"adminPassword"
+).value;
+
+try {
+
+const response =
+await fetch(
+"/api/admin/login",
+{
+
+method: "POST",
+
+headers: {
+"Content-Type":
+"application/json"
+},
+
+body: JSON.stringify({
+email,
+password
+})
+
+});
+
+const data =
+await response.json();
+
+if (!response.ok) {
+
+alert(data.message);
+
+return;
+
+}
+
+localStorage.setItem(
+"adminToken",
+data.token
+);
+
+alert("Admin login successful!");
+
+loadStudents();
+
+} catch (error) {
+
+alert(
+"Cannot connect to server."
+);
+
+}
+
+}
+
+
+async function loadStudents() {
+
+const token =
+localStorage.getItem(
+"adminToken"
+);
+
+const response =
+await fetch(
+"/api/admin/students",
+{
+
+headers: {
+
+Authorization:
+`Bearer ${token}`
+
+}
+
+});
+
+const students =
+await response.json();
+
+let html = `
+
+<h2 class="section-title">
+Registered Students
+</h2>
+
+<table>
+
+<tr>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>School</th>
+
+<th>Course</th>
+
+</tr>
+
+`;
+
+students.forEach(
+student => {
+
+html += `
+
+<tr>
+
+<td>
+${student.name}
+</td>
+
+<td>
+${student.email}
+</td>
+
+<td>
+${student.school}
+</td>
+
+<td>
+${student.course}
+</td>
+
+</tr>
+
+`;
+
+});
+
+html += `
+
+</table>
+
+`;
+
+document.getElementById(
+"adminContent"
+).innerHTML = html;
+
+}
+
+</script>
+
+</body>
+
+</html>

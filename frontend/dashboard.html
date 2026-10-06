@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Student Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="loadDashboard()">
+
+<nav>
+
+<div class="logo">
+Student Dashboard
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="quiz.html">
+Quiz
+</a>
+
+<button
+class="btn"
+onclick="logout()"
+>
+Logout
+</button>
+
+</div>
+
+</nav>
+
+<section>
+
+<div class="container">
+
+<h1>
+Welcome,
+<span id="studentName">
+Student
+</span>! 👋
+</h1>
+
+<br>
+
+<div class="cards">
+
+<div class="profile">
+
+<h3>Email</h3>
+
+<p id="studentEmail"></p>
+
+</div>
+
+<div class="profile">
+
+<h3>School</h3>
+
+<p id="studentSchool"></p>
+
+</div>
+
+<div class="profile">
+
+<h3>Course</h3>
+
+<p id="studentCourse"></p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+My Learning
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+HTML Basics
+</h3>
+
+<p>
+Learn webpage structure.
+</p>
+
+<a
+href="html-basics.html"
+class="btn"
+>
+Continue
+</a>
+
+<button
+class="btn"
+onclick="updateProgress('HTML Basics', true)"
+>
+Mark Complete
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>
+CSS Basics
+</h3>
+
+<p>
+Learn webpage design.
+</p>
+
+<a
+href="css-basics.html"
+class="btn"
+>
+Continue
+</a>
+
+<button
+class="btn"
+onclick="updateProgress('CSS Basics', true)"
+>
+Mark Complete
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>
+Python Basics
+</h3>
+
+<p>
+Learn programming.
+</p>
+
+<a
+href="python-basics.html"
+class="btn"
+>
+Continue
+</a>
+
+<button
+class="btn"
+onclick="updateProgress('Python Basics', true)"
+>
+Mark Complete
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+My Progress
+</h2>
+
+<div
+id="progressList"
+class="cards"
+>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+My Quiz Results
+</h2>
+
+<div
+id="results"
+class="cards"
+>
+</div>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

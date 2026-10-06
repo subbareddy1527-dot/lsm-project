@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Coding Quiz</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+Coding Quiz
+</div>
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+</nav>
+
+<section>
+
+<div class="container">
+
+<div class="card">
+
+<h1>
+Coding Basics Quiz 🧠
+</h1>
+
+<div id="quiz"></div>
+
+<button
+class="btn"
+onclick="submitQuiz()"
+>
+Submit Quiz
+</button>
+
+<h2 id="result"></h2>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+<script>
+
+const questions = [
+
+{
+q: "What is HTML used for?",
+options: [
+"Web Structure",
+"Database",
+"Operating System",
+"Antivirus"
+],
+answer: 0
+},
+
+{
+q: "Which language is used for webpage styling?",
+options: [
+"Python",
+"CSS",
+"SQL",
+"C"
+],
+answer: 1
+},
+
+{
+q: "Which programming language is beginner friendly?",
+options: [
+"Python",
+"Assembly",
+"Machine Code",
+"Binary"
+],
+answer: 0
+},
+
+{
+q: "Which technology adds interaction to webpages?",
+options: [
+"HTML",
+"CSS",
+"JavaScript",
+"JPEG"
+],
+answer: 2
+},
+
+{
+q: "AI stands for?",
+options: [
+"Automatic Internet",
+"Artificial Intelligence",
+"Advanced Input",
+"Application Interface"
+],
+answer: 1
+}
+
+];
+
+const quizBox =
+document.getElementById("quiz");
+
+questions.forEach(
+(item, index) => {
+
+let html = `
+
+<div class="card">
+
+<h3>
+${index + 1}.
+${item.q}
+</h3>
+`;
+
+item.options.forEach(
+(option, optionIndex) => {
+
+html += `
+
+<label>
+
+<input
+type="radio"
+name="q${index}"
+value="${optionIndex}"
+>
+
+${option}
+
+</label>
+
+<br>
+
+`;
+
+});
+
+html += `
+
+</div>
+
+`;
+
+quizBox.innerHTML += html;
+
+});
+
+async function submitQuiz() {
+
+let score = 0;
+
+questions.forEach(
+(item, index) => {
+
+const selected =
+document.querySelector(
+`input[name="q${index}"]:checked`
+);
+
+if (
+selected &&
+Number(selected.value) === item.answer
+) {
+
+score++;
+
+}
+
+});
+
+const percentage =
+(score / questions.length) * 100;
+
+document.getElementById(
+"result"
+).textContent =
+`Your Score: ${score}/${questions.length}
+(${percentage.toFixed(0)}%)`;
+
+await saveQuizResult(
+"Coding Basics Quiz",
+score,
+questions.length
+);
+
+}
+
+</script>
+
+</body>
+
+</html>

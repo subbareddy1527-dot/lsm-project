@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Student Registration</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+After School Coding
+</div>
+
+<a href="index.html">
+Home
+</a>
+
+</nav>
+
+<section>
+
+<div class="form-container">
+
+<div class="form-box">
+
+<h1>
+Student Registration
+</h1>
+
+<form onsubmit="registerStudent(event)">
+
+<label>
+Student Name
+</label>
+
+<input
+type="text"
+name="name"
+placeholder="Enter your name"
+required
+>
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter email"
+required
+>
+
+<label>
+Password
+</label>
+
+<input
+type="password"
+name="password"
+placeholder="Create password"
+required
+>
+
+<label>
+Age</label>
+
+<input
+type="number"
+name="age"
+min="8"
+max="25"
+required
+>
+
+<label>
+School / College
+</label>
+
+<input
+type="text"
+name="school"
+placeholder="Enter school name"
+required
+>
+
+<label>
+Phone
+</label>
+
+<input
+type="tel"
+name="phone"
+placeholder="Parent / Student phone"
+>
+
+<label>
+Select Course
+</label>
+
+<select name="course" required>
+
+<option value="">
+Choose Course
+</option>
+
+<option>
+HTML Basics
+</option>
+
+<option>
+CSS Basics
+</option>
+
+<option>
+Python Basics
+</option>
+
+<option>
+All Courses
+</option>
+
+</select>
+
+<button
+type="submit"
+class="btn"
+>
+Register
+</button>
+
+</form>
+
+<p>
+Already have an account?
+<a href="login.html">
+Login
+</a>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
